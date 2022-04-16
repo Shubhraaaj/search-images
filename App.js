@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import ImageList from './components/ImageList/ImageList';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      {/* <Text>Shubhraj Prasad Singh</Text> */}
       <StatusBar style="auto" />
+      {/* <Button title='Click here' /> */}
+      <ImageList />
     </View>
   );
 }
