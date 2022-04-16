@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Image, View, StyleSheet, Text, FlatList, Pressable, SafeAreaView } from "react-native";
 import SearchBar from './SearchBar';
 import { useDispatch } from 'react-redux'
@@ -28,6 +28,7 @@ export default function ImageList({ navigation }) {
     const [query, setQuery] = useState("");
     
     const [loading, setLoading] = useState(false);
+    const [page, setPage] = useState(1);
     const lastItemRef = useRef();
     const observer = useRef();
 
@@ -35,24 +36,54 @@ export default function ImageList({ navigation }) {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        fetchImages();
+        fetchImages('');
     },[]);
 
-    const fetchImages = async () => {
-        let url = `https://pixabay.com/api/?key=${API_KEY}` + (query.length>0?`&q=${query}`:``) ;
+    // Infinte
+    useEffect(() => {
+        const options = {
+          root: document,
+          rootMargin: "20px",
+          threshold: 1
+        };
+        const callback = (images) => {
+            if (images[0].isIntersecting) {
+                console.log('last item reached');
+                fetchImages(query);
+            }
+        };
+        observer.current = new IntersectionObserver(callback, options);
+        if (lastItemRef.current) {
+            observer.current.observe(lastItemRef.current);
+        }
+        return () => {
+            observer.current.disconnect();
+        };
+    });
+
+    const fetchImages = async (text) => {
+        let url = `https://pixabay.com/api/?key=${API_KEY}` + (text.length>0?`&q=${text}&page=${page}`:`&page=${page}`) ;
         let response = await fetch(
             url, {
                 method: 'GET'
             });
         let json = await response.json();
-        setImages(json.hits);
+
+        if(query===text){
+            console.log('add the new elements');
+            setImages(images.concat(json.hits));
+            setPage(page+1);
+        }else{
+            console.log('assign new array');
+            setImages(json.hits);
+            setPage(1);
+        }
+        setQuery(text);
     };
 
     const pressed = (item) => {
-        // TODO: Intent to details page
         dispatch({ type: IMAGE_CHANGE, payload: item });
         navigation.navigate('Details', { name: item.id } )
-        // console.log('press', item);
     };
 
     const renderItem = ({ item }) => (
@@ -69,12 +100,10 @@ export default function ImageList({ navigation }) {
         </Pressable>
     );
 
-    useEffect(()=>{
-        fetchImages();
-    },[query]);
-
     const textChange = (text) => {
-        setQuery(text);
+        // setImages([]);
+        fetchImages(text);
+        // setQuery(text,  fetchImages(text));
     };
 
     return (
@@ -87,6 +116,8 @@ export default function ImageList({ navigation }) {
                 data={images}
                 renderItem={renderItem} 
                 keyExtractor={item=>item.id} />
+            {images.length!==0&&<p ref={lastItemRef} style={{textAlign: 'center'}}>Loading images...</p>}
+            {images.length===0&&query!==''&&<h2 style={{textAlign: 'center'}}>No images found...</h2>}
         </SafeAreaView>
     );
 }
