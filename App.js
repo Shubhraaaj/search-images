@@ -1,15 +1,40 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import ImageDetails from './components/ImageDetails/ImageDetails';
 import ImageList from './components/ImageList/ImageList';
+import { Provider } from 'react-redux';
+import configureStore from './redux/store/configureStore';
+/**
+ * Infinite scrolling - 1
+ * Redux State - 1
+ * Android device - 1
+ * Screen rotate - 1
+ * UI Designing - 4
+ */
+
+const Stack = createNativeStackNavigator();
+const store = configureStore();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <Text>Shubhraj Prasad Singh</Text> */}
-      <StatusBar style="auto" />
-      {/* <Button title='Click here' /> */}
-      <ImageList />
-    </View>
+    <Provider store = { store }>
+      <NavigationContainer>
+          <Stack.Navigator>
+              <Stack.Screen 
+                name="Home"
+                component={ImageList}
+                options={{title: 'Pixabay'}}
+                />
+              <Stack.Screen 
+                name="Details"
+                component={ImageDetails}
+                options={{title: 'Image Details'}}
+                />
+          </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
