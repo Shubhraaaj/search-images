@@ -6,15 +6,16 @@ import { IMAGE_CHANGE } from '../../redux/constants';
 
 const styles = StyleSheet.create({
     container: {
-      paddingBottom: 24,
+        paddingBottom: 24,
+        flex: 1,
     },
     tinyLogo: {
       width: 50,
       height: 50,
     },
     logo: {
-      width: '80vw',
-      height: '40vh',
+      width: 80,
+      height: 40,
       borderColor: 'lightgray',
       borderWidth: 1,
       borderRadius: 4,
@@ -35,31 +36,31 @@ export default function ImageList({ navigation }) {
     const API_KEY = '3909886-a4b3466f9dc96a8cc1a1256c9';
     const dispatch = useDispatch();
 
-    useEffect(()=>{
+    useEffect(()=>{ 
         fetchImages('');
     },[]);
 
     // Infinte
-    useEffect(() => {
-        const options = {
-          root: document,
-          rootMargin: "20px",
-          threshold: 1
-        };
-        const callback = (images) => {
-            if (images[0].isIntersecting) {
-                console.log('last item reached');
-                fetchImages(query);
-            }
-        };
-        observer.current = new IntersectionObserver(callback, options);
-        if (lastItemRef.current) {
-            observer.current.observe(lastItemRef.current);
-        }
-        return () => {
-            observer.current.disconnect();
-        };
-    });
+    // useEffect(() => {
+    //     const options = {
+    //       root: 'document',
+    //       rootMargin: 20,
+    //       threshold: 1
+    //     };
+    //     const callback = (images) => {
+    //         if (images[0].isIntersecting) {
+    //             console.log('last item reached');
+    //             fetchImages(query);
+    //         }
+    //     };
+    //     observer.current = new IntersectionObserver(callback, options);
+    //     if (lastItemRef.current) {
+    //         observer.current.observe(lastItemRef.current);
+    //     }
+    //     return () => {
+    //         observer.current.disconnect();
+    //     };
+    // });
 
     const fetchImages = async (text) => {
         let url = `https://pixabay.com/api/?key=${API_KEY}` + (text.length>0?`&q=${text}&page=${page}`:`&page=${page}`) ;
@@ -90,9 +91,21 @@ export default function ImageList({ navigation }) {
         <Pressable
             onPress={()=>pressed(item)}>
                 <View
-                    style={styles.container}>
+                    style={{
+                        // width: '100%',
+                        flex: 1
+                    }}>
                     <Image
-                        style={styles.logo}
+                        style={{
+                            flex:1,
+                            width: 350,
+                            height: 200,
+                            margin: 8,
+                            marginLeft: 24,
+                            borderRadius: 8,
+                            borderColor: 'lightgray',
+                            borderWidth: 1
+                        }}
                         source={{
                             uri: item.previewURL,
                         }} />
@@ -107,17 +120,18 @@ export default function ImageList({ navigation }) {
     };
 
     return (
-        <SafeAreaView>
-            <SearchBar onTextChange={textChange} />
+        <View style={{ flex: 2, flexDirection: 'column' }}>
+            <SearchBar style={{  }} onTextChange={textChange} />
             <FlatList
                 style={{
-                    paddingTop: 24,
+                    // paddingTop: 24,
+                    flex: 1
                 }}
                 data={images}
                 renderItem={renderItem} 
-                keyExtractor={item=>item.id} />
-            {images.length!==0&&<p ref={lastItemRef} style={{textAlign: 'center'}}>Loading images...</p>}
-            {images.length===0&&query!==''&&<h2 style={{textAlign: 'center'}}>No images found...</h2>}
-        </SafeAreaView>
+                keyExtractor={item=>item?.id} />
+            {/* {images.length!==0&&<Text ref={lastItemRef}>Loading images...</Text>}
+            {images.length===0&&query!==''&&<Text>No images found...</Text>} */}
+        </View>
     );
 }

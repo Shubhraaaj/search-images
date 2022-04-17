@@ -6,9 +6,10 @@ import ImageDetails from './components/ImageDetails/ImageDetails';
 import ImageList from './components/ImageList/ImageList';
 import { Provider } from 'react-redux';
 import configureStore from './redux/store/configureStore';
+
 /**
- * Infinite scrolling - 1
- * Redux State - 1
+ * Infinite scrolling 
+ * Redux State 
  * Android device - 1
  * Screen rotate - 1
  * UI Designing - 4

@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, TextInput, StyleSheet, Button } from "react-native";
+import { SafeAreaView, TextInput, StyleSheet, Button, View } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { IMAGE_CHANGE } from "../../redux/constants";
 
-const styles = StyleSheet.create({
-    input: {
-      height: 40,
-      marginTop: 24,
-      borderWidth: 1,
-      padding: 10,
-      borderColor: 'gray',
-      borderRadius: 4,
-      width: '80vw',
-      margin: 'auto'
-    },
-    button: {
-        width: '100px'
-    }
-});
+// const styles = StyleSheet.create({
+//     input: {
+//       height: 40,
+//       marginTop: 24,
+//       borderWidth: 1,
+//       padding: 10,
+//       borderColor: 'gray',
+//       borderRadius: 4,
+//       width: 80,
+//       margin: 'auto'
+//     },
+//     button: {
+//         width: 100
+//     }
+// });
 
 const newImage = {
     'collections': 349,
@@ -56,17 +56,30 @@ export default function SearchBar ({ onTextChange }) {
     };
 
     return (
-        <SafeAreaView>
+        <View style={{ 
+            marginLeft: 24 , 
+            marginRight: 24,
+            marginTop: 24,
+            marginBottom: 16,
+            flexDirection: 'row' 
+            }}>
             <TextInput
-                style={styles.input}
+                style={{
+                    height: 40,
+                    borderWidth: 1,
+                    padding: 10,
+                    marginRight: 10, 
+                    borderColor: 'gray',
+                    borderRadius: 4,
+                    flex:1,
+                }}
                 onChangeText={setText}
                 value={text}
-                placeholder="useless placeholder"
-                keyboardType="numeric"
+                placeholder="Search images..."
+                keyboardType="text"
             />
-            <Button title="Search" onPress={()=>onTextChange(text)} />
-            {/* <Button title="Search" onPress={()=>updateImage()} /> */}
-
-        </SafeAreaView>
+            <Button title="Search" 
+                onPress={()=>onTextChange(text)} />
+        </View>
     );
 }
