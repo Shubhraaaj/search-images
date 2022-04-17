@@ -2,7 +2,7 @@
 
 
 
-<img src="https://cdn.pixabay.com/photo/2019/01/23/21/16/pixabay-3951079_960_720.png" width="300" height="300">
+<img src="https://cdn.pixabay.com/photo/2019/01/23/21/16/pixabay-3951079_960_720.png" width="600" height="300">
 
 # search-images
 
