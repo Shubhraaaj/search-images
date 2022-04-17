@@ -1,9 +1,9 @@
 import { Chip } from "@rneui/base";
 import { useEffect, useState } from "react";
-import { Image, View, StyleSheet, Text, Button } from "react-native";
+import { Image, View, Text } from "react-native";
 import { useSelector } from "react-redux";
 import useOrientation from "../Orientation/useOrientation";
-// import * as avatar from '../../assets/user.png';
+
 const placeholder = require('../../assets/placeholder.png');
 const avatar = require('../../assets/user.png');
 const tagsImg = require('../../assets/tag.png');

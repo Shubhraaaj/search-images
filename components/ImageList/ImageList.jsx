@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Image, View, StyleSheet, Text, FlatList, Pressable, SafeAreaView } from "react-native";
+import React, { useEffect, useState } from 'react';
+import { Image, View, Text, FlatList, Pressable } from "react-native";
 import SearchBar from './SearchBar';
 import { useDispatch } from 'react-redux'
 import { IMAGE_CHANGE } from '../../redux/constants';
@@ -84,7 +84,6 @@ export default function ImageList({ navigation }) {
                 method: 'GET'
             });
         let json = await response.json();
-        console.log('add the new elements');
         setImages([...images, ...json.hits]);
         setPage(page+1);
     };
@@ -96,7 +95,6 @@ export default function ImageList({ navigation }) {
                 method: 'GET'
             });
         let json = await response.json();
-        console.log('assign new array');
         setImages(json.hits);
         setPage(2);
         setQuery(text);
