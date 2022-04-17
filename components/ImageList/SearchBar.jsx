@@ -76,7 +76,7 @@ export default function SearchBar ({ onTextChange }) {
                 onChangeText={setText}
                 value={text}
                 placeholder="Search images..."
-                keyboardType="text"
+                keyboardType="default"
             />
             <Button title="Search" 
                 onPress={()=>onTextChange(text)} />
