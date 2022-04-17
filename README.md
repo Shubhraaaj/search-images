@@ -13,10 +13,10 @@ The data source is Pixabay API.
 
 
 # Table of Contents
-1. [Installation](https://github.com/kkk0908/ship_it/blob/master/README.md#installation)
-2. [Technology Stack](https://github.com/kkk0908/ship_it/blob/master/README.md#technology-stack)
-3. [Authors](https://github.com/kkk0908/ship_it/blob/master/README.md#technology-stack)
-4. [License](https://github.com/kkk0908/ship_it/blob/master/README.md#technology-stack)
+1. [Installation](https://github.com/Shubhraaaj/search-images/blob/master/README.md#installation)
+2. [Technology Stack](https://github.com/Shubhraaaj/search-images/blob/master/README.md#technology-stack)
+3. [Authors](https://github.com/Shubhraaaj/search-images/blob/master/README.md#technology-stack)
+4. [License](https://github.com/Shubhraaaj/search-images/blob/master/README.md#technology-stack)
 
 ### Please Note:
  1. We recommend using this app in an Android device 
