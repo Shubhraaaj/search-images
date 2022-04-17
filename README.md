@@ -4,7 +4,6 @@
 
 <img src="https://cdn.pixabay.com/photo/2019/01/23/21/16/pixabay-3951079_960_720.png" width="600" height="300">
 
-# search-images
 
 Search-Images an app built in React Native that allows a user to perform an image search. 
 The app allows the user to input a text query and display all the images for that query in a scrollable list. 
