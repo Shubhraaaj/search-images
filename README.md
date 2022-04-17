@@ -33,7 +33,9 @@ The data source is Pixabay API.
 
 ### 3. Run
 ```npm start web```
+
 ```npm start android```
+
 ```npm start ios```
 
 Open http://localhost:19006 to view it in the browser
