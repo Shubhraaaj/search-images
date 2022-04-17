@@ -25,7 +25,7 @@ The data source is Pixabay API.
 
 # Installation
 ### 1. Clone the repo
-```git clone https://https://github.com/Shubhraaaj/search-images.git``` 
+```git clone https://github.com/Shubhraaaj/search-images.git``` 
 
 ### 2. Install NPM packages
 
