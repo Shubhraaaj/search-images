@@ -40,7 +40,6 @@ export default function ImageDetails () {
                         margin: 24, 
                         height: image?.webformatHeight
                     }}
-                    defaultSource={placeholder}
                     source={{
                         uri: image?.webformatURL,
                     }}/>
@@ -81,7 +80,6 @@ export default function ImageDetails () {
                         marginRight: 24, 
                         height: image?.webformatHeight
                     }}
-                    defaultSource={{placeholder}}
                     source={{
                         uri: image?.webformatURL,
                     }}/>
