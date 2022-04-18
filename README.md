@@ -10,7 +10,11 @@ The app allows the user to input a text query and display all the images for tha
 Clicking on an image should bring the user to a detail page which displays that image along with some additional information. 
 The data source is Pixabay API.
 
-
+### Screenshots (Portrait & Landscape):
+![Home screen with Searchbar (Portrait)](https://user-images.githubusercontent.com/24857974/163854809-40517aba-9ee8-4a04-9ecc-3a13d138e398.jpg)
+![Image Details Screen (Portrait)](https://user-images.githubusercontent.com/24857974/163854828-bda0f878-3740-48df-a15c-c1bd64cb0e5b.jpg)
+![Home screen with Searchbar (Landscape)](https://user-images.githubusercontent.com/24857974/163854764-6906ce09-2aad-4db4-b792-12a1e372f247.jpg)
+![Image Details Screen (Landscape)](https://user-images.githubusercontent.com/24857974/163854861-0cec5904-3171-44c8-a757-90beb44d8bc9.jpg)
 
 # Table of Contents
 1. [Installation](https://github.com/Shubhraaaj/search-images/blob/master/README.md#installation)
